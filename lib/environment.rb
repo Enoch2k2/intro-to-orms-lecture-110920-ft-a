@@ -1,19 +1,29 @@
+# ENV["SINATRA_ENV"] ||= "development"
+
 require 'sqlite3'
 require 'pry'
 
-DB = SQLite3::Database.new("db/books.db")
+require 'rake'
+require 'active_record'
 
-sql = <<-SQL
-  CREATE TABLE IF NOT EXISTS books (
-    id INTEGER PRIMARY KEY,
-    title TEXT,
-    genre TEXT,
-    author TEXT
-  )
-SQL
+ActiveRecord::Base.establish_connection(
+  :adapter => "sqlite3",
+  :database => "./db/books.db"
+)
 
-DB.execute(sql)
-DB.results_as_hash = true
+# DB = SQLite3::Database.new("db/books.db")
+
+# sql = <<-SQL
+#   CREATE TABLE IF NOT EXISTS books (
+#     id INTEGER PRIMARY KEY,
+#     title TEXT,
+#     genre TEXT,
+#     author TEXT
+#   )
+# SQL
+
+# DB.execute(sql)
+# DB.results_as_hash = true
 
 # [1, "LOTR", "Fantasy", "Author"]
 =begin
