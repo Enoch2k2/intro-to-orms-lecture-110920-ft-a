@@ -138,6 +138,7 @@ class Cli
         puts "Which book would you like to search for?"
         input = get_input("Search by Title: ")
         books = Book.where("title LIKE ?", "%#{input}%")
+
         list_searched_books(books)
     end
 
