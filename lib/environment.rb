@@ -36,4 +36,6 @@ ActiveRecord::Base.establish_connection(
 =end
 
 require_relative "./models/book"
+require_relative "./models/author"
+require_relative "./models/genre"
 require_relative "./cli"

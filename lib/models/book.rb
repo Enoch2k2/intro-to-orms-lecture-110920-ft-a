@@ -1,7 +1,8 @@
 class Book < ActiveRecord::Base
     validates :title, uniqueness: true, presence: true
-    validates :genre, presence: true
-    validates :author, presence: true
+
+    belongs_to :genre
+    belongs_to :author
 end
 
 
